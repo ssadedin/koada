@@ -8,6 +8,10 @@ I wrote this because I wanted a super basic way to use llama2-code in my daily w
 interface that wasn't cluttered with tuning options and other also gave the simple affordances I wanted, 
 such as vim keybindings and markdown rendering of outputs.
 
+How it looks:
+
+![Screenshot](screenshot.png)
+
 ## Project setup
 
 Clone the project into the `examples/server` directory of [llama.cpp](https://github.com/ggerganov/llama.cpp):
