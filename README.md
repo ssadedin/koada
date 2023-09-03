@@ -42,10 +42,13 @@ Download a model:
 cd ../..
 
 mkdir models && cd models && \
-wget 'https://huggingface.co/TheBloke/CodeLlama-13B-GGUF/resolve/main/codellama-13b.Q5_K_M.gguf'
+wget 'https://huggingface.co/TheBloke/CodeLlama-13B-GGUF/resolve/main/codellama-13b-instruct.Q5_K_M.gguf'
 
 cd ../..
 ```
+
+Note that this code is specifically designed to work with the _instruct_ models so always look for models
+with that fine tuning. These are models that use prompts in the form `[INSTR]....[/INSTR]`.
 
 ## Running
 
