@@ -16,7 +16,7 @@
                 </v-col>
                 <v-col>
                     <v-card class="elevation-1 my-3 mx-2">
-                        <v-card-title>Repsonse</v-card-title>
+                        <v-card-title>Response</v-card-title>
                         <v-card-text>
                         <div class="responsecode" v-html="markdown_response"></div>
                         </v-card-text>
