@@ -34,12 +34,15 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    // proxy: {
+        // "/completion.js" : "http://localhost:8080/completion.js"
+    // }
   },
-  base: "/koada/",
+//   base: "/koada/",
   build: {
     rollupOptions: {
         external: ['/completion.js']
     },
     outDir: '../public/koada'
-  }
+  },
 })

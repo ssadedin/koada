@@ -58,7 +58,7 @@ import { ref } from 'vue';
 import { computed, onMounted } from 'vue';
 
 // @ts-ignore
-import { llama } from '/completion.js' 
+import { llama } from '@/completion.js' 
 import {marked} from 'marked';
 
 const model_response = ref('') 
