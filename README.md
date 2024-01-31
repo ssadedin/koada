@@ -1,4 +1,4 @@
-# Koada - Simple Front end for LLama2 Code Instruct Model
+<img width="967" alt="image" src="https://github.com/ssadedin/koada/assets/138868/6361a773-291f-4f52-9f15-e08cce2c4afe"># Koada - Simple Front end for LLama2 Code Instruct Model
 
 This is an ultra simple front end that is designed to interface with [llama.cpp](https://github.com/ggerganov/llama.cpp).
 It lets you write instructions for the model to complete and serves back the responses to you
@@ -19,6 +19,15 @@ Clone the project into the `examples/server` directory of [llama.cpp](https://gi
 ```bash
 git clone https://github.com/ggerganov/llama.cpp.git && cd llama.cpp && make && \
 cd examples/server && git clone https://github.com/ssadedin/koada.git
+```
+
+**Note**:
+Since originally created, llama.cpp has stopped supporting the modeul format for the codellama13b model
+mentioned below. To run older models, check out the older version of the code and compile it:
+
+```
+# for older GGUFv1 models only
+git checkout abd21fc && make clean && make
 ```
 
 **Note**: for great performance on Apple Silicon machines, add `LLAMA_METAL=1` environment variable.
