@@ -1,4 +1,3 @@
-<img width="967" alt="image" src="https://github.com/ssadedin/koada/assets/138868/6361a773-291f-4f52-9f15-e08cce2c4afe"># Koada - Simple Front end for LLama2 Code Instruct Model
 
 This is an ultra simple front end that is designed to interface with [llama.cpp](https://github.com/ggerganov/llama.cpp).
 It lets you write instructions for the model to complete and serves back the responses to you
