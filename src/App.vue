@@ -5,7 +5,13 @@
             <v-row>
                 <v-col>
                 <v-card class="elevation-1 my-3 mx-2 codecard">
-                    <v-card-title>Code Assistant</v-card-title>
+                    <v-card-title>Assistant</v-card-title>
+                    <div style="float: right; margin-top:-28px; padding-right: 1em;" class="smaller-radio">
+                        <v-radio-group v-model="mode" inline density="compact">
+                            <v-radio label="coding" value="code"></v-radio>
+                            <v-radio label="general" value="general"></v-radio>
+                        </v-radio-group>
+                    </div>
                     <v-card-subtitle>Enter your instruction below, press Ctrl+J or click Generate to create a response</v-card-subtitle>
                     <v-card-text style="height: 440px">
                         <div id="editor" style="height: 370px">
@@ -35,6 +41,10 @@
 </template>
 
 <style>
+.smaller-radio .v-radio__inner-circle {
+  height: 6px !important;
+  width: 6px !important;
+}
 .codecard {
     position: relative;
 }
@@ -67,6 +77,8 @@ const markdown_response = computed(() => {
     return marked(model_response.value)
 })
 
+const mode = ref('code')
+
 onMounted(() => {
     console.log('mounted')
 
@@ -98,8 +110,13 @@ async function process() {
     // @ts-ignore
     let inst = window.editor.getValue()
 
+    const modes: { [key: string]: string; }  = {
+        general:  "You are a helpful assistant that provides concise and accurate answers to any general question that you are asked of. Please answer the following question:",
+        code: "Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using \`\`\`"
+    }
+
     let prompt = `
-    [INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using \`\`\`:
+    [INST] ${modes[mode.value]}:
         ${inst}
     [/INST]
     `.trim()
