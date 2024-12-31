@@ -10,6 +10,7 @@
                         <v-radio-group v-model="mode" inline density="compact">
                             <v-radio label="coding" value="code"></v-radio>
                             <v-radio label="general" value="general"></v-radio>
+                            <v-radio label="raw" value="raw"></v-radio>
                         </v-radio-group>
                     </div>
                     <v-card-subtitle>Enter your instruction below, press Ctrl+J or click Generate to create a response</v-card-subtitle>
@@ -112,10 +113,11 @@ async function process() {
 
     const modes: { [key: string]: string; }  = {
         general:  "You are a helpful assistant that provides concise and accurate answers to any general question that you are asked of. Please answer the following question:",
-        code: "Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using \`\`\`"
+        code: "Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using \`\`\`",
+        raw: ""
     }
 
-    let prompt = `
+    let prompt = mode.value == 'raw' ? inst : `
     [INST] ${modes[mode.value]}:
         ${inst}
     [/INST]
