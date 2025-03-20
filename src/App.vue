@@ -123,8 +123,44 @@ async function process() {
     [/INST]
     `.trim()
 
-    for await (const chunk of llama(prompt)) {
-        model_response.value = model_response.value + chunk.data.content;
-    }
+    model_response.value = await fetchFromOllama(prompt)
+
+    // for await (const chunk of llama(prompt)) {
+    //     model_response.value = model_response.value + chunk.data.content;
+    // }
 }
+
+
+async function fetchFromOllama(prompt: string): Promise<string> {
+  const url = "http://localhost:11434/api/generate"; // Replace with the actual endpoint if different
+//   const apiKey = "your-api-key-here"; // Replace with your actual API key
+
+  const body = {
+    prompt: prompt,
+    model: 'mistral-nemo:latest',
+    stream : false
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // "Authorization": `Bearer ${apiKey}`, // Include the API key for authorization
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.response;
+  } catch (error) {
+    console.error("Error fetching from Ollama API:", error);
+    throw error; // Re-throw the error to handle it upstream
+  }
+}
+
 </script>
